@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:kurukshetra_tour/Screens/TourMain.dart';
+import 'package:kurukshetra_tour/Theme/myTheme.dart';
+
+import 'Screens/Splash/welcome.dart';
+
 
 void main() {
   runApp( 
 
     MaterialApp(
-      home: TourMainScreen(),
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+      theme: lightTheme,
+
     )
   );
 }

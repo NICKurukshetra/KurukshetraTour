@@ -1,4 +1,11 @@
+import 'package:dotted_line/dotted_line.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
+import 'package:kurukshetra_tour/Models/ModMainApp.dart';
+import 'package:kurukshetra_tour/Screens/Error/404.dart';
+import 'package:kurukshetra_tour/Screens/Header/header.dart';
+
 
 class TourMainScreen extends StatefulWidget {
   const TourMainScreen({ Key? key }) : super(key: key);
@@ -6,43 +13,64 @@ class TourMainScreen extends StatefulWidget {
   @override
   _TourMainScreenState createState() => _TourMainScreenState();
 }
-
+const color = const Color(0xffb796d5f);
+var data ;
+//final Color color = HexColor.fromHex('#');
 class _TourMainScreenState extends State<TourMainScreen> {
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+   data= getMainScreen().fetchmaindata();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return    Scaffold(
-          backgroundColor: Colors.green[300],
+         
           drawer: Drawer(),
           appBar: AppBar(
-            iconTheme: IconThemeData(color: Colors.blue),
+            iconTheme: IconThemeData(),
             backgroundColor: Colors.white,
             titleSpacing: 0,
+            
+
             actions: [
+
+
               Icon(
-                Icons.map,
-                size: 30,
-                color: Colors.blue,
+                CupertinoIcons.circle_grid_hex_fill,
+                size: 25,
+                color: Colors.blueGrey[900],
               ),
               Icon(
-                Icons.search,
-                size: 30,
-                color: Colors.blue,
+                CupertinoIcons.search,
+                size: 25,
+                //color: Colors.blue,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Icon(
+                  CupertinoIcons.cart,
+                  size: 25,
+                  //color: Colors.blue,
+                ),
               ),
             ],
-            title: Text(""),
+            title: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: PopUp(),
+            ),
             centerTitle: true,
           ),
           body: Container(
-            decoration: BoxDecoration(
-              color: Colors.grey[600],
-              // gradient: LinearGradient(
-              //   colors: [
-              //     Colors.green,
-              //     Colors.cyan,
-              //   ],
-              // ),
-            ),
-            child: Column(children: <Widget>[
+            color: color,
+            
+            child: Column(
+              
+              children: <Widget>[
+              LineImage(),
               Expanded(
                 flex: 1,
                 child: Column(
@@ -56,37 +84,74 @@ class _TourMainScreenState extends State<TourMainScreen> {
                         //padding: EdgeInsets.all(5),
                         width: double.infinity,
                         child: SingleChildScrollView(
+                          physics: ScrollPhysics(),
                           child: Container(
                             color: Colors.grey[600],
-                            child: Column(
-                              children: [
-                                MyContent(
-                                  route: TourMainScreen(),
-                                  myImage:
-                                      'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060167.png',
-                                  title: 'About Kurukshetra',
-                                  icon: Icon(
-                                    Icons.comment_bank_outlined,
-                                    color: Colors.white,
-                                    size: 32,
-                                  ),
-                                  id: 1,
-                                  type: "1",
-                                ),
-                                
-                                
-                              ],
-                            ),
+                            child: FutureBuilder<List<MainScreen>>(
+                              future: getMainScreen().fetchmaindata(),
+                              
+                              builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount:snapshot.data!.length,
+                              itemBuilder: (BuildContext context, Index){
+                              return MyContent(
+                              route: TourMainScreen(),
+                              myImage:
+                                  snapshot.data![Index].image,
+                              title: snapshot.data![Index].title,
+                              icon:snapshot.data![Index].icon,
+                              id: 1,
+                              type: "1",
+                            );
+ 
+                            });
+                    } else if (snapshot.hasError) {
+              
+                      return  error404();
+              }
+
+              // By default, show a loading spinner.
+              return  Center(child: CircularProgressIndicator());
+                            
+                              },),
+
+                            // child: ListView.builder(
+                            //   physics: NeverScrollableScrollPhysics(),
+                            //   scrollDirection: Axis.vertical,
+                            //   shrinkWrap: true,
+                            //   itemCount:5,itemBuilder: (BuildContext context,int Index){
+                            //   return MyContent(
+                            //   route: TourMainScreen(),
+                            //   myImage:
+                            //       'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060657.jpg',
+                            //   title: 'About Kurukshetra',
+                            //   icon: Icon(
+                            //     Icons.comment_bank_outlined,
+                            //     color: Colors.white,
+                            //     size: 32,
+                            //   ),
+                            //   id: 1,
+                            //   type: "1",
+                            // );
+ 
+                            // }),
                           ),
                         ),
                       ),
                     ),
+                    LineImage(),
                      // call class in TourAppbar.dart file
                   ],
                 ),
               ),
             ]),
+        
           ),
+          bottomNavigationBar:  BottomNavigation(),
           );
   }
   
@@ -94,7 +159,7 @@ class _TourMainScreenState extends State<TourMainScreen> {
 class MyContent extends StatelessWidget {
   String title;
    String myImage;
-   Icon icon;
+   String icon;
    String type;
    int id;
   Widget route;
@@ -110,19 +175,24 @@ class MyContent extends StatelessWidget {
       },
       child: Column(
         children: [
+          
           ListTile(
-            leading: icon,
+            leading:  Image.network(
+              icon,height: 30,
+              color: Colors.white,
+             
+            ),
             title: Text(
               title,
-              style: TextStyle(color: Colors.white, fontSize: 22),
+              style: TextStyle(color: Colors.white, fontSize: 18),
             ),
           ),
           Container(
-            height: 150,
-            padding: EdgeInsets.all(10),
+           height: 150,
+            //padding: EdgeInsets.all(10),
             child: Image.network(
               myImage,
-              fit: BoxFit.cover,
+              fit: BoxFit.fitHeight,
               width: double.infinity,
             ),
             // Image.asset(
@@ -131,10 +201,21 @@ class MyContent extends StatelessWidget {
             //   width: double.infinity,
             // ),
           ),
-          Divider(
-            color: Colors.white,
-            thickness: 2,
-          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: DottedLine(
+  direction: Axis.horizontal,
+  lineLength: double.infinity,
+  lineThickness: 2.0,
+  dashLength: 4.0,
+  dashColor: Colors.white,
+  dashRadius: 0.0,
+  dashGapLength: 4.0,
+  dashGapColor: Colors.transparent,
+  dashGapRadius: 0.0,
+),
+          )
+,
         ],
       ),
     );

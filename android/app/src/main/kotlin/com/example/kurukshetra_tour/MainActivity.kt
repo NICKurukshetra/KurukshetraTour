@@ -1,4 +1,4 @@
-package com.example.kurukshetra_tour
+package com.nic.kurukshetra_tour
 
 import io.flutter.embedding.android.FlutterActivity
 

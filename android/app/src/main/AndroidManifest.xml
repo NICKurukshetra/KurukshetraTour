@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kurukshetra_tour">
+    package="com.nic.kurukshetra_tour">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="kurukshetra_tour"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
