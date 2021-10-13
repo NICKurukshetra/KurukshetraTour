@@ -16,39 +16,41 @@ class _MyHomePageState extends State<MyHomePage> {
         Duration(seconds: 5),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => TourMainScreen())));
-  }
+   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //     // title: const Text('Sample Code'),
-        //     ),
+      
+        
         body: Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
               child: Text(
             "Kurukshetra Darshan",
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 30,
+              color: Colors.brown[900],
+            
+              fontSize: 22,
             ),
           )),
           Container(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                FlutterLogo(size: 100),
+                //FlutterLogo(size: 100),
+                Image.asset("assets/images/mahabharata.png",width: MediaQuery.of(context).size.width/1.5,),
                 Center(
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           "देखो मेरा कुरुक्षेत्र",
                           style: TextStyle(
-                            color: Colors.blue,
+                         
                             fontSize: 15,
                           ),
                         ),
@@ -62,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Text(
                           "Dekho Mera Kurukshetra",
                           style: TextStyle(
-                            color: Colors.blue,
+                          
                             fontSize: 15,
                           ),
                         ),
@@ -80,15 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
             child: ShaderMask(
               blendMode: BlendMode.modulate,
               shaderCallback: (size) => LinearGradient(
-                colors: [Colors.green, Colors.yellow, Colors.red, Colors.blue],
+                colors: [Colors.green, Colors.red, Colors.blue],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ).createShader(
                 Rect.fromLTWH(0, 0, size.width, size.height),
               ),
               child: Text(
-                '''यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।
-अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्।।''',
+                'District Administration Kurukshetra',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

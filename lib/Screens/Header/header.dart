@@ -1,9 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
+import 'package:kurukshetra_tour/Models/ModMainApp.dart';
 import 'package:kurukshetra_tour/Screens/TourMain.dart';
 
 // Three Dot Appbar Menu
-class PopUp extends StatelessWidget {
+
+
+class PopUp extends StatefulWidget {
+ 
   @override
+  State<PopUp> createState() => _PopUpState();
+}
+
+class _PopUpState extends State<PopUp> {
+
+var data;
+
+@override
+  void initState() {
+    // TODO: implement initState
+    data=getMainScreen().fetchmaindata();
+    super.initState();
+  }
+
+  @override
+
   Widget build(BuildContext context) {
     return Row(
       children: [
@@ -11,68 +32,79 @@ class PopUp extends StatelessWidget {
          // color: Colors.grey.shade200,
          offset: Offset(15,40),
           elevation: 30,
-          itemBuilder: (BuildContext bc) => [
-            PopupMenuItem(
-                child: Row(children: [
-              Icon(Icons.search),
-              Text(
-                'About Kurukshetra',
-                style: TextStyle(
+          itemBuilder:(context) {
+                  return data.map((MainScreen choice) {
+                    return PopupMenuItem(
+                      value: choice,
+                      child: Text(choice.title),
+                    );
+                  }).toList();
+                },
+          //[
+            
+            
+            // PopupMenuItem(
+            //     child: Row(children: [
+            //   Icon(Icons.search),
+            //   Text(
+            //     'About Kurukshetra',
+            //     style: TextStyle(
                 
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ])),
-            PopupMenuItem(
-                child: Row(children: [
-              Icon(Icons.explore),
-              Text(
-                'Explore the City',
-                style: TextStyle(
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   )
+            // ])),
+            // PopupMenuItem(
+            //     child: Row(children: [
+            //   Icon(Icons.explore),
+            //   Text(
+            //     'Explore the City',
+            //     style: TextStyle(
                  
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ])),
-            PopupMenuItem(
-                child: Row(children: [
-              Icon(Icons.ac_unit),
-              Text(
-                'Unexplored Kurukshetra',
-                style: TextStyle(
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   )
+            // ])),
+            // PopupMenuItem(
+            //     child: Row(children: [
+            //   Icon(Icons.ac_unit),
+            //   Text(
+            //     'Unexplored Kurukshetra',
+            //     style: TextStyle(
                
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ])),
-            PopupMenuItem(
-                child: Row(children: [
-              Icon(Icons.bed),
-              Text(
-                'Stay in Delhi',
-                style: TextStyle(
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   )
+            // ])),
+            // PopupMenuItem(
+            //     child: Row(children: [
+            //   Icon(Icons.bed),
+            //   Text(
+            //     'Stay in Delhi',
+            //     style: TextStyle(
                 
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ])),
-            PopupMenuItem(
-                child: Row(children: [
-              Icon(Icons.social_distance),
-              Text(
-                'Entertainment & Fun',
-                style: TextStyle(
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   )
+            // ])),
+            // PopupMenuItem(
+            //     child: Row(children: [
+            //   Icon(Icons.social_distance),
+            //   Text(
+            //     'Entertainment & Fun',
+            //     style: TextStyle(
                
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ])),
-          ],
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   )
+            // ])
+            // ),
+          //],
           onSelected: (route) {
             print(route);
             // Note You must create respective pages for navigation

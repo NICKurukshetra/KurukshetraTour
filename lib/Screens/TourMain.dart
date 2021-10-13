@@ -3,8 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
 import 'package:kurukshetra_tour/Models/ModMainApp.dart';
+import 'package:kurukshetra_tour/Models/Places.dart';
 import 'package:kurukshetra_tour/Screens/Error/404.dart';
+
+import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
+
 import 'package:kurukshetra_tour/Screens/Header/header.dart';
+import 'package:kurukshetra_tour/Screens/PlacesGrid/PlacesList.dart';
+
+
 
 
 class TourMainScreen extends StatefulWidget {
@@ -14,7 +21,8 @@ class TourMainScreen extends StatefulWidget {
   _TourMainScreenState createState() => _TourMainScreenState();
 }
 const color = const Color(0xffb796d5f);
-var data ;
+var popmap=[MainScreen];
+
 //final Color color = HexColor.fromHex('#');
 class _TourMainScreenState extends State<TourMainScreen> {
 
@@ -22,93 +30,52 @@ class _TourMainScreenState extends State<TourMainScreen> {
   @override
   void initState() {
     // TODO: implement initState
-   data= getMainScreen().fetchmaindata();
+  
+
     super.initState();
   }
+  
   @override
   Widget build(BuildContext context) {
     return    Scaffold(
          
           drawer: Drawer(),
-          appBar: AppBar(
-            iconTheme: IconThemeData(),
-            backgroundColor: Colors.white,
-            titleSpacing: 0,
-            
-
-            actions: [
-
-
-              Icon(
-                CupertinoIcons.circle_grid_hex_fill,
-                size: 25,
-                color: Colors.blueGrey[900],
-              ),
-              Icon(
-                CupertinoIcons.search,
-                size: 25,
-                //color: Colors.blue,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Icon(
-                  CupertinoIcons.cart,
-                  size: 25,
-                  //color: Colors.blue,
-                ),
-              ),
-            ],
-            title: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: PopUp(),
-            ),
-            centerTitle: true,
-          ),
+          appBar: Appbar(),
           body: Container(
             color: color,
             
             child: Column(
-              
               children: <Widget>[
               LineImage(),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
                    // call class in TourAppbar.dart file
                     Expanded(
                       flex: 1,
-                      child: Container(
-                        //padding: EdgeInsets.all(5),
-                        width: double.infinity,
-                        child: SingleChildScrollView(
-                          physics: ScrollPhysics(),
-                          child: Container(
-                            color: Colors.grey[600],
-                            child: FutureBuilder<List<MainScreen>>(
-                              future: getMainScreen().fetchmaindata(),
-                              
-                              builder: (context, snapshot) {
+                      child: SingleChildScrollView(
+                        physics: ScrollPhysics(),
+                        child: Container(
+                          //color: Colors.grey[600],
+                          child: FutureBuilder<List<MainScreen>>(
+                            future: getMainScreen().fetchmaindata(),
+                            
+                            builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount:snapshot.data!.length,
-                              itemBuilder: (BuildContext context, Index){
-                              return MyContent(
-                              route: TourMainScreen(),
-                              myImage:
-                                  snapshot.data![Index].image,
-                              title: snapshot.data![Index].title,
-                              icon:snapshot.data![Index].icon,
-                              id: 1,
-                              type: "1",
-                            );
+                            physics: NeverScrollableScrollPhysics(),
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount:snapshot.data!.length,
+                            itemBuilder: (BuildContext context, Index){
+                            return MyContent(
+                            route: PlacesGrid(title: snapshot.data![Index].title,image: snapshot.data![Index].image,),
+                            myImage:
+                                snapshot.data![Index].image,
+                            title: snapshot.data![Index].title,
+                            icon:snapshot.data![Index].icon,
+                            id: 1,
+                            type: "1",
+                          );
  
-                            });
+                          });
                     } else if (snapshot.hasError) {
               
                       return  error404();
@@ -116,38 +83,37 @@ class _TourMainScreenState extends State<TourMainScreen> {
 
               // By default, show a loading spinner.
               return  Center(child: CircularProgressIndicator());
-                            
-                              },),
+                          
+                            },),
 
-                            // child: ListView.builder(
-                            //   physics: NeverScrollableScrollPhysics(),
-                            //   scrollDirection: Axis.vertical,
-                            //   shrinkWrap: true,
-                            //   itemCount:5,itemBuilder: (BuildContext context,int Index){
-                            //   return MyContent(
-                            //   route: TourMainScreen(),
-                            //   myImage:
-                            //       'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060657.jpg',
-                            //   title: 'About Kurukshetra',
-                            //   icon: Icon(
-                            //     Icons.comment_bank_outlined,
-                            //     color: Colors.white,
-                            //     size: 32,
-                            //   ),
-                            //   id: 1,
-                            //   type: "1",
-                            // );
+                          // child: ListView.builder(
+                          //   physics: NeverScrollableScrollPhysics(),
+                          //   scrollDirection: Axis.vertical,
+                          //   shrinkWrap: true,
+                          //   itemCount:5,itemBuilder: (BuildContext context,int Index){
+                          //   return MyContent(
+                          //   route: TourMainScreen(),
+                          //   myImage:
+                          //       'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060657.jpg',
+                          //   title: 'About Kurukshetra',
+                          //   icon: Icon(
+                          //     Icons.comment_bank_outlined,
+                          //     color: Colors.white,
+                          //     size: 32,
+                          //   ),
+                          //   id: 1,
+                          //   type: "1",
+                          // );
  
-                            // }),
-                          ),
+                          // }),
                         ),
                       ),
                     ),
                     LineImage(),
                      // call class in TourAppbar.dart file
-                  ],
-                ),
-              ),
+                 
+                
+              
             ]),
         
           ),
@@ -156,6 +122,7 @@ class _TourMainScreenState extends State<TourMainScreen> {
   }
   
 }
+
 class MyContent extends StatelessWidget {
   String title;
    String myImage;
@@ -184,7 +151,7 @@ class MyContent extends StatelessWidget {
             ),
             title: Text(
               title,
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
           Container(

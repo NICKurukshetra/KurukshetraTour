@@ -11,6 +11,11 @@ class APIServices {
         .get(Uri.parse('http://103.87.24.58/tour/AppMain'));
   }
 
+  Future fetchappPlaces() async {
+    return await http
+        .get(Uri.parse('http://103.87.24.58/tour/Places'));
+  }
+
   /* static Future postUsers(Users users) async {
     Map<String, String> header = {
       'Content-type': 'application/json',
