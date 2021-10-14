@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final places = placesFromJson(jsonString);
-
 import 'dart:convert';
 
 List<Places> placesFromJson(String str) => List<Places>.from(json.decode(str).map((x) => Places.fromJson(x)));
@@ -13,18 +9,33 @@ class Places {
         required this.title,
         required this.image,
         required this.cat,
+        required this.descp,
+        required this.timing,
+        required this.map,
+        required this.nearby,
+        required this.link,
         required this.id,
     });
 
     String title;
     String image;
     String cat;
+    String descp;
+    String timing;
+    String map;
+    String nearby;
+    String link;
     int id;
 
     factory Places.fromJson(Map<String, dynamic> json) => Places(
         title: json["title"],
         image: json["image"],
         cat: json["cat"],
+        descp: json["descp"],
+        timing: json["timing"],
+        map: json["map"],
+        nearby: json["nearby"],
+        link: json["link"],
         id: json["id"],
     );
 
@@ -32,6 +43,11 @@ class Places {
         "title": title,
         "image": image,
         "cat": cat,
+        "descp": descp,
+        "timing": timing,
+        "map": map,
+        "nearby": nearby,
+        "link": link,
         "id": id,
     };
 }

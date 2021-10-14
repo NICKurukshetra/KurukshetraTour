@@ -11,11 +11,14 @@ import 'package:kurukshetra_tour/Screens/Error/404.dart';
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
 import 'package:kurukshetra_tour/Screens/Header/header.dart';
 import 'package:kurukshetra_tour/Screens/PlacesDetails/PlacesDetail.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 
 
 
-var data=[];
+List<Places> data=[];
+
+
   String maintitle="";
   String headerimage="";
 const color = const Color(0xffb796d5f);
@@ -34,15 +37,20 @@ class _PlacesGridState extends State<PlacesGrid> {
     // TODO: implement initState
    maintitle=widget.title;
    headerimage=widget.image;
-    //getdate();
+    getdate();
     super.initState();
   }
 
-// Future getdate()
-// async {
+Future<List<Places>> getdate()
+async {
 
-//   data= await getMainScreen().fetchplaces();
-// }
+
+ var futuredata= await getMainScreen().fetchplaces();
+
+ data=futuredata;
+ return futuredata;
+  
+}
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +70,7 @@ class _PlacesGridState extends State<PlacesGrid> {
                     HeaderSinglePage(),
                     Expanded(
                       child: FutureBuilder<List<Places>>(
-                        future: getMainScreen().fetchplaces(),
+                        future: getdate(),
 
                         builder: (context,snaphost) {
                           if(snaphost.hasData)
@@ -79,10 +87,10 @@ class _PlacesGridState extends State<PlacesGrid> {
                           itemCount: snaphost.data!.length,
                           itemBuilder: (BuildContext ctx, index)
                           {
-                            return MyContent(
-                              title: snaphost.data![index].title, 
-                              myImage: snaphost.data![index].image,
-                              id: snaphost.data![index].id,
+                            return MyContent(id: index,
+                              // title: snaphost.data![index].title, 
+                              // myImage: snaphost.data![index].image,
+                              // id: snaphost.data![index].id,
                               );
                           }                                           
                           );
@@ -114,38 +122,45 @@ class _PlacesGridState extends State<PlacesGrid> {
 }
 
 class MyContent extends StatelessWidget {
-  String title;
-  final String myImage;
+  // String title;
+  // final String myImage;
+  // String desc;
+  // String timeing;
+  // String map;
+  // String nearby;
+  // String link;
   late int id;
 
-  MyContent({ required this.title, required this.myImage,required id});
+   MyContent({ required this.id,});
 
   @override
   Widget build(BuildContext context) {
     return 
     GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => PlacesDetail(title: title,image: myImage,)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => PlacesDetail(data: data,index: id,)));
       },
       child: 
     Padding(
       padding: const EdgeInsets.only(left:8.0,right: 8.0),
       child: Column(
           children: [
-            Image.network(
+            FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: data[id].image,fit: BoxFit.fill,
+            width: MediaQuery.of(context).size.width/2,height: MediaQuery.of(context).size.height /8,),
+            // Image.network(
               
-              myImage,
-              fit: BoxFit.fill,
-              width: 400,
-              height: 100,
-            ),
+            //   myImage,
+            //   fit: BoxFit.fill,
+            //   width: 400,
+            //   height: 100,
+            // ),
             Wrap(
               children :[ Align(
                 alignment: Alignment.bottomLeft,
                 
                 child: Text(
                                 
-                  title,
+                  data[id].title,
                   textAlign: TextAlign.start,
                   maxLines: 2,
                   

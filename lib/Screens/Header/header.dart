@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
 import 'package:kurukshetra_tour/Models/ModMainApp.dart';
+import 'package:kurukshetra_tour/Screens/Route/myRoute.dart';
 import 'package:kurukshetra_tour/Screens/TourMain.dart';
 
 // Three Dot Appbar Menu
@@ -14,12 +15,12 @@ class PopUp extends StatefulWidget {
 
 class _PopUpState extends State<PopUp> {
 
-var data;
+
 
 @override
   void initState() {
     // TODO: implement initState
-    data=getMainScreen().fetchmaindata();
+    
     super.initState();
   }
 
@@ -33,10 +34,27 @@ var data;
          offset: Offset(15,40),
           elevation: 30,
           itemBuilder:(context) {
-                  return data.map((MainScreen choice) {
+                  return popmap.map((MainScreen choice) {
                     return PopupMenuItem(
                       value: choice,
-                      child: Text(choice.title),
+                      child: GestureDetector(
+                        onTap: () {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => myRoute(id: choice.id,index: popmap.indexOf(choice),)));
+      },
+                        child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                        
+                        
+                           Image.network(choice.icon,width: MediaQuery.of(context).size.width/20,),
+                           
+                           Padding(
+                             padding: const EdgeInsets.only(left: 10),
+                             child: Text(choice.title),
+                           ),
+                        
+                        ],                      ),
+                      ),
                     );
                   }).toList();
                 },

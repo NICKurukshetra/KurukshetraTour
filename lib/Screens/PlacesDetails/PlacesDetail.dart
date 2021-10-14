@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:kurukshetra_tour/Models/Places.dart';
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
 import 'package:kurukshetra_tour/Screens/Header/header.dart';
 
@@ -8,9 +9,9 @@ import 'package:kurukshetra_tour/Screens/Header/header.dart';
 
 class PlacesDetail extends StatelessWidget {
 
-  final String title;
-  final String image;
-  PlacesDetail({required this.title,required this.image});
+  List<Places> data=[];
+  int index;
+  PlacesDetail({required this.data,required this.index});
   @override
   Widget build(BuildContext context) {
     return 
@@ -32,7 +33,7 @@ class PlacesDetail extends StatelessWidget {
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
-                              HeaderSinglePage(title: title,image: image,),
+                              HeaderSinglePage(title: data[index].title,image: data[index].image,),
                               Container(
                                   padding: EdgeInsets.only(left: 10),
                                   alignment: Alignment.topLeft,
@@ -44,7 +45,7 @@ class PlacesDetail extends StatelessWidget {
                                   padding: EdgeInsets.all(10),
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                    'Sheikh Chilli Tomb is complex of structures located in Thanesar, in the Kurukshetra district of Haryana, India. It includes two tombs, a madrasa, Mughal gardens and various subsequent features.The main tomb belongs to Sufi Abd-ur-Rahim Abdul-Karim Abd-ur-Razak, popularly known by the name of Sheikh Chilli. He was Qadiriyya Sufi master of Mughal Prince Dara Shikoh.',
+                                    data[index].descp,
                                     style: TextStyle(fontSize: 12),
                                   )),
                               Container(
@@ -58,37 +59,39 @@ class PlacesDetail extends StatelessWidget {
                                   padding: EdgeInsets.all(10),
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                    '9:am - 5:30 pm (Open All Days)',
+                                    data[index].timing,
                                     style: TextStyle(fontSize: 12),
                                   )),
                               Container(
                                   padding: EdgeInsets.only(left: 10),
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                    'Nearest Bus Stand',
+                                    'Nearest Place',
                                     style: TextStyle(fontSize: 16),
                                   )),
                               Container(
                                   padding: EdgeInsets.all(10),
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                    'SH 6, Jyoti Nagar, Kurukshetra, Haryana 136118',
+                                    data[index].nearby,
                                     style: TextStyle(fontSize: 12),
                                   )),
                               Container(
                                   padding: EdgeInsets.all(10),
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                      'For more details visit: kurukshetra.gov.in',
+                                      'For more details visit:'+data[index].link,
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: Colors.blue,
                                         fontWeight: FontWeight.bold,
                                       ))),
-                              Container(
-                                  padding: EdgeInsets.all(10),
-                                  alignment: Alignment.topLeft,
-                                  child: Image.network("https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2021/10/2021101343.jpg")),
+                              GestureDetector(
+                                child: Container(
+                                    padding: EdgeInsets.all(10),
+                                    alignment: Alignment.topLeft,
+                                    child: Image.network("https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2021/10/2021101343.jpg")),
+                              ),
                             ],
                           ),
                         ),

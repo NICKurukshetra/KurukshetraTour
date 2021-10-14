@@ -1,19 +1,24 @@
+import 'dart:ui';
+
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
 import 'package:kurukshetra_tour/Models/ModMainApp.dart';
-import 'package:kurukshetra_tour/Models/Places.dart';
+import 'package:kurukshetra_tour/Screens/AboutUs.dart';
+
 import 'package:kurukshetra_tour/Screens/Error/404.dart';
 
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
 
 import 'package:kurukshetra_tour/Screens/Header/header.dart';
 import 'package:kurukshetra_tour/Screens/PlacesGrid/PlacesList.dart';
+import 'package:kurukshetra_tour/Screens/Route/myRoute.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 
 
-
+List<MainScreen> popmap=[];
 class TourMainScreen extends StatefulWidget {
   const TourMainScreen({ Key? key }) : super(key: key);
 
@@ -21,7 +26,7 @@ class TourMainScreen extends StatefulWidget {
   _TourMainScreenState createState() => _TourMainScreenState();
 }
 const color = const Color(0xffb796d5f);
-var popmap=[MainScreen];
+
 
 //final Color color = HexColor.fromHex('#');
 class _TourMainScreenState extends State<TourMainScreen> {
@@ -34,6 +39,16 @@ class _TourMainScreenState extends State<TourMainScreen> {
 
     super.initState();
   }
+  Future<List<MainScreen>> getdata()
+async {
+
+
+ var futuredata= await getMainScreen().fetchmaindata();
+
+ popmap=futuredata;
+ return futuredata;
+  
+}
   
   @override
   Widget build(BuildContext context) {
@@ -55,7 +70,7 @@ class _TourMainScreenState extends State<TourMainScreen> {
                         child: Container(
                           //color: Colors.grey[600],
                           child: FutureBuilder<List<MainScreen>>(
-                            future: getMainScreen().fetchmaindata(),
+                            future: getdata(),
                             
                             builder: (context, snapshot) {
                   if (snapshot.hasData) {
@@ -66,7 +81,7 @@ class _TourMainScreenState extends State<TourMainScreen> {
                             itemCount:snapshot.data!.length,
                             itemBuilder: (BuildContext context, Index){
                             return MyContent(
-                            route: PlacesGrid(title: snapshot.data![Index].title,image: snapshot.data![Index].image,),
+                            route: myRoute(id: snapshot.data![Index].id,index: Index) ,
                             myImage:
                                 snapshot.data![Index].image,
                             title: snapshot.data![Index].title,
@@ -138,7 +153,7 @@ class MyContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => route));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => route));
       },
       child: Column(
         children: [
@@ -157,11 +172,8 @@ class MyContent extends StatelessWidget {
           Container(
            height: 150,
             //padding: EdgeInsets.all(10),
-            child: Image.network(
-              myImage,
-              fit: BoxFit.fitHeight,
-              width: double.infinity,
-            ),
+            child: FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: myImage,fit: BoxFit.cover,)
+           
             // Image.asset(
             //   'assets/'+image,
             //   fit: BoxFit.cover,
