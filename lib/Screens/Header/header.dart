@@ -32,7 +32,7 @@ class _PopUpState extends State<PopUp> {
         PopupMenuButton(
          // color: Colors.grey.shade200,
          offset: Offset(15,40),
-          elevation: 30,
+          //elevation: 30,
           itemBuilder:(context) {
                   return popmap.map((MainScreen choice) {
                     return PopupMenuItem(
@@ -58,73 +58,9 @@ class _PopUpState extends State<PopUp> {
                     );
                   }).toList();
                 },
-          //[
-            
-            
-            // PopupMenuItem(
-            //     child: Row(children: [
-            //   Icon(Icons.search),
-            //   Text(
-            //     'About Kurukshetra',
-            //     style: TextStyle(
-                
-            //       fontSize: 14,
-            //       fontWeight: FontWeight.bold,
-            //     ),
-            //   )
-            // ])),
-            // PopupMenuItem(
-            //     child: Row(children: [
-            //   Icon(Icons.explore),
-            //   Text(
-            //     'Explore the City',
-            //     style: TextStyle(
-                 
-            //       fontSize: 14,
-            //       fontWeight: FontWeight.bold,
-            //     ),
-            //   )
-            // ])),
-            // PopupMenuItem(
-            //     child: Row(children: [
-            //   Icon(Icons.ac_unit),
-            //   Text(
-            //     'Unexplored Kurukshetra',
-            //     style: TextStyle(
-               
-            //       fontSize: 14,
-            //       fontWeight: FontWeight.bold,
-            //     ),
-            //   )
-            // ])),
-            // PopupMenuItem(
-            //     child: Row(children: [
-            //   Icon(Icons.bed),
-            //   Text(
-            //     'Stay in Delhi',
-            //     style: TextStyle(
-                
-            //       fontSize: 14,
-            //       fontWeight: FontWeight.bold,
-            //     ),
-            //   )
-            // ])),
-            // PopupMenuItem(
-            //     child: Row(children: [
-            //   Icon(Icons.social_distance),
-            //   Text(
-            //     'Entertainment & Fun',
-            //     style: TextStyle(
-               
-            //       fontSize: 14,
-            //       fontWeight: FontWeight.bold,
-            //     ),
-            //   )
-            // ])
-            // ),
-          //],
+         
           onSelected: (route) {
-            print(route);
+           
             // Note You must create respective pages for navigation
             //Navigator.pushNamed(context, route);
           },
@@ -132,7 +68,7 @@ class _PopUpState extends State<PopUp> {
         Text(
           'Kurukshetra Darshan',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: MediaQuery.of(context).size.width/25,
             color: Colors.black87,
             
           ),
@@ -199,5 +135,66 @@ class LineImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Image.asset('assets/images/outline.jpeg',
       fit: BoxFit.contain);
+  }
+}
+class CustomClipPath extends CustomClipper<Path> {
+  var radius = 1.0;
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height);
+    path.arcToPoint(Offset(size.width, size.height-5),
+        radius: Radius.elliptical(25, 3));
+    path.lineTo(size.width, 0);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
+class HeaderSinglePage extends StatelessWidget {
+  late String headerimage;
+  String maintitle;
+
+  HeaderSinglePage({required this.maintitle, required this.headerimage});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: <Widget>[
+          ClipPath(
+            clipper: CustomClipPath(),
+            child: Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height/6,
+              color: color,
+            ),
+          ),
+          
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+               height: MediaQuery.of(context).size.height/8,
+                alignment: Alignment.center,
+                decoration: new BoxDecoration(
+            color: Colors.black,
+            image: new DecorationImage(
+              fit: BoxFit.cover,
+              colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.dstIn),
+              image: new NetworkImage(headerimage),
+
+            ),
+                ),
+                child:Text(maintitle              ,
+                style: TextStyle(color: Colors.white, fontSize: 26), 
+            ),
+        
+         
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

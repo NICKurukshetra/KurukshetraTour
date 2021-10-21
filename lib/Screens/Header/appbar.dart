@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kurukshetra_tour/Screens/StaySafe.dart';
+import 'package:kurukshetra_tour/Screens/TourMain.dart';
 
 import 'header.dart';
 
@@ -10,38 +12,43 @@ class Appbar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
    
       return AppBar(
+        
             iconTheme: IconThemeData(),
             backgroundColor: Colors.white,
             titleSpacing: 0,
+
             
 
             actions: [
 
 
-              Icon(
-                CupertinoIcons.circle_grid_hex_fill,
-                size: 25,
-                color: Colors.blueGrey[900],
+              IconButton(
+
+                icon:  Icon(CupertinoIcons.circle_grid_hex_fill,
+                size: 22,
+                color: Colors.blueGrey[900]),
+                onPressed: (){
+
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => StaySafe()));
+                }
+                
               ),
               Icon(
                 CupertinoIcons.search,
                 size: 25,
                 //color: Colors.blue,
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Icon(
-                  CupertinoIcons.cart,
-                  size: 25,
-                  //color: Colors.blue,
-                ),
+              IconButton(
+               icon:  Icon( CupertinoIcons.cart,
+                size: 22,),
+                onPressed: (){
+
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => StaySafe()));
+                }
               ),
             ],
-            title: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: PopUp(),
-            ),
-            centerTitle: true,
+            title: PopUp(),
+            
           );
       
   }

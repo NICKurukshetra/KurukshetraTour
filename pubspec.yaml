@@ -32,7 +32,7 @@ dependencies:
   dotted_line: ^3.0.1
   transparent_image: ^2.0.0
   readmore: ^2.1.0
-
+  carousel_slider: ^4.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

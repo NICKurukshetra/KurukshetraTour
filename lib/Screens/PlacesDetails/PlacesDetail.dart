@@ -33,7 +33,8 @@ class PlacesDetail extends StatelessWidget {
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
-                              HeaderSinglePage(title: data[index].title,image: data[index].image,),
+                              HeaderSinglePage(maintitle:data[index].title,headerimage:data[index].image),
+                              
                               Container(
                                   padding: EdgeInsets.only(left: 10),
                                   alignment: Alignment.topLeft,
@@ -107,46 +108,5 @@ class PlacesDetail extends StatelessWidget {
           bottomNavigationBar:
               BottomNavigation(), // call class in TourAppbar.dart file
         );
-  }
-}
-
-class HeaderSinglePage extends StatelessWidget {
-
-  final String title;
-  final String image;
-  HeaderSinglePage({required this.title,required this.image});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            alignment: Alignment.topLeft,
-            padding: EdgeInsets.only(top: 10, left: 5),
-            child: Text(
-              title,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(5),
-            width: 400,
-            height: 150,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                    image,
-                  )),
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              color: Colors.redAccent,
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }

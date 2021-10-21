@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
 import 'package:readmore/readmore.dart';
 
 import 'Header/appbar.dart';
@@ -18,7 +19,7 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          drawer: Drawer(),
+          drawer: DrawerMenu(),
           appBar: Appbar(),
           body: Container(
             child: Column(children: <Widget>[
@@ -37,7 +38,7 @@ class _AboutUsState extends State<AboutUs> {
                           child: Container(
                             child: Column(
                               children: [
-                                HeaderSinglePage(),
+                               HeaderSinglePage(maintitle:"About Us",headerimage:"https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2019/01/2019010428.jpg"),
                                 Container(
                                   margin: EdgeInsets.all(20),
                                   color: Colors.grey[300],
@@ -175,57 +176,3 @@ class _AboutUsState extends State<AboutUs> {
 }
 
 
-class CustomClipPath extends CustomClipper<Path> {
-  var radius = 1.0;
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height);
-    path.arcToPoint(Offset(size.width, size.height-5),
-        radius: Radius.elliptical(25, 3));
-    path.lineTo(size.width, 0);
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-}
-
-class HeaderSinglePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: <Widget>[
-          ClipPath(
-            clipper: CustomClipPath(),
-            child: Container(
-               width: double.infinity,
-              height: MediaQuery.of(context).size.height/6,
-              color: color,
-            ),
-          ),
-          Container(
-              padding: EdgeInsets.all(5),
-              child: Image.network(
-                'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2019/01/2019010428.jpg',
-                fit: BoxFit.fill,
-                width: 400,
-                height: 100,
-              )),
-          Container(
-            alignment: Alignment.bottomCenter,
-            height: 100,
-            padding: EdgeInsets.only(
-                // top: 30,
-                ),
-            child: Text(
-              'About Us',
-              style: TextStyle(color: Colors.white, fontSize: 26),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

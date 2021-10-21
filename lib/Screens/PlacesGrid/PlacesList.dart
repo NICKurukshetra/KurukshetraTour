@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
 import 'package:kurukshetra_tour/Models/Places.dart';
+
 import 'package:kurukshetra_tour/Screens/Error/404.dart';
 
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
@@ -67,7 +68,7 @@ async {
                   
                   children: [
                     LineImage(),
-                    HeaderSinglePage(),
+                    HeaderSinglePage(maintitle:maintitle,headerimage:headerimage),
                     Expanded(
                       child: FutureBuilder<List<Places>>(
                         future: getdate(),
@@ -178,60 +179,5 @@ class MyContent extends StatelessWidget {
   }
 }
 
-class CustomClipPath extends CustomClipper<Path> {
-  var radius = 1.0;
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height);
-    path.arcToPoint(Offset(size.width, size.height-5),
-        radius: Radius.elliptical(25, 3));
-    path.lineTo(size.width, 0);
-    return path;
-  }
 
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-}
 
-class HeaderSinglePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: <Widget>[
-          ClipPath(
-            clipper: CustomClipPath(),
-            child: Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height/6,
-              color: color,
-            ),
-          ),
-          
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-               height: MediaQuery.of(context).size.height/8,
-                alignment: Alignment.center,
-                decoration: new BoxDecoration(
-            color: Colors.black,
-            image: new DecorationImage(
-              fit: BoxFit.cover,
-              colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.dstIn),
-              image: new NetworkImage(headerimage),
-
-            ),
-                ),
-                child:Text(maintitle              ,
-                style: TextStyle(color: Colors.white, fontSize: 26), 
-            ),
-        
-         
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
