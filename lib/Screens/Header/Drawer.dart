@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Screens/TourMain.dart';
+import 'package:kurukshetra_tour/Screens/contact.dart';
+import 'package:kurukshetra_tour/Screens/feedback.dart';
 
+import '../Disclaimer.dart';
 import '../StaySafe.dart';
-
 
 class DrawerMenu extends StatefulWidget {
   @override
@@ -54,8 +56,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => TourMainScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TourMainScreen()));
             },
           ),
           ExpansionTile(
@@ -127,18 +129,28 @@ class _DrawerMenuState extends State<DrawerMenu> {
               "Contact Us",
             ),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => StaySafe()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => contactcls()));
             },
           ),
           ListTile(
             leading: Icon(Icons.facebook, color: Colors.brown),
             title: Text(
-              "Facebook",
+              "Feedback",
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => StaySafe()));
+                  context, MaterialPageRoute(builder: (context) => FeedBack()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.facebook, color: Colors.brown),
+            title: Text(
+              "Disclaimer",
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Disclaimer()));
             },
           ),
           Row(

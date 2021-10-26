@@ -12,38 +12,23 @@ import 'package:kurukshetra_tour/Screens/Error/404.dart';
 import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
 import 'package:kurukshetra_tour/Screens/Header/header.dart';
+import 'package:kurukshetra_tour/Screens/PlacesDetails/PlacesDetail.dart';
 import 'package:kurukshetra_tour/Screens/TourMain.dart';
 
 class ExploreTheCity extends StatefulWidget {
   final String title;
   final String image;
-  ExploreTheCity({required this.title, required this.image});
+  String id;
+
+  ExploreTheCity({required this.title, required this.image, required this.id});
 
   @override
   State<ExploreTheCity> createState() => _ExploreTheCityState();
 }
 
 class _ExploreTheCityState extends State<ExploreTheCity> {
-  final List<dynamic> imagesList = [
-    'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060167.png',
-    'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060670.jpg',
-    'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060657.jpg',
-    'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060666.jpg',
-    'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060670.jpg',
-    'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060657.jpg',
-    'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/06/2018060666.jpg',
-  ];
-
-  final List<dynamic> imagesList2 = [
-    'https://cdn.pixabay.com/photo/2017/12/10/14/47/piza-3010062_1280.jpg',
-    'https://cdn.pixabay.com/photo/2016/06/07/01/49/ice-cream-1440830_1280.jpg',
-    'https://cdn.pixabay.com/photo/2017/12/27/07/07/brownie-3042106_1280.jpg',
-    'https://cdn.pixabay.com/photo/2018/02/25/07/15/food-3179853_1280.jpg',
-    'https://cdn.pixabay.com/photo/2015/10/26/11/10/honey-1006972_1280.jpg',
-  ];
-
   Future<List<MultiStyle>> getdata() async {
-    var futuredata = await getMainScreen().fetchMultistyle();
+    var futuredata = await getMainScreen().fetchMultistyle(widget.id);
 
     return futuredata;
   }
@@ -122,6 +107,20 @@ class _ExploreTheCityState extends State<ExploreTheCity> {
                                                 return Stack(
                                                   children: [
                                                     GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        PlacesDetail(
+                                                                          data: snapshot
+                                                                              .data!
+                                                                              .toList(),
+                                                                          index:
+                                                                              index,
+                                                                        )));
+                                                      },
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsets

@@ -5,22 +5,31 @@ import 'package:kurukshetra_tour/Screens/PlacesGrid/PlacesList.dart';
 import 'package:kurukshetra_tour/Screens/TourMain.dart';
 
 class myRoute extends StatelessWidget {
-  int id;
+  int type;
   int index;
-  myRoute({required this.id,required this.index});
-  
+  String srno;
+  myRoute({required this.type, required this.index, required this.srno});
 
   @override
   Widget build(BuildContext context) {
-     
-      if( id== 1) { return AboutUs();}
-    if( id== 2) { return PlacesGrid(title: popmap[index].title,image: popmap[index].image,);}
-    if( id== 4) { return ExploreTheCity(title: popmap[index].title,image: popmap[index].image,);}
-       
-       
-       return TourMainScreen();
-       
-      
-  } 
-  
+    if (type == 1) {
+      return AboutUs();
+    }
+    if (type == 2) {
+      return PlacesGrid(
+        title: popmap[index].title,
+        image: popmap[index].image,
+        id: srno,
+      );
+    }
+    if (type == 3) {
+      return ExploreTheCity(
+        title: popmap[index].title,
+        image: popmap[index].image,
+        id: srno,
+      );
+    }
+
+    return TourMainScreen();
+  }
 }
