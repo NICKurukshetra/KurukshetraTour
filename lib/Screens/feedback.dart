@@ -341,7 +341,7 @@ class _FeedBackState extends State<FeedBack> {
                                     padding: EdgeInsets.all(10),
                                     alignment: Alignment.topLeft,
                                     child: Image.asset(
-                                      'assets/imag/mapImage.jpg',
+                                      'assets/images/mapImage.jpg',
                                       width: double.infinity,
                                       fit: BoxFit.cover,
                                     ),

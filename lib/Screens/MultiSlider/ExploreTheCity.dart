@@ -1,10 +1,8 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:http/http.dart';
+
 import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
 import 'package:kurukshetra_tour/Models/MultiStyle.dart';
 import 'package:kurukshetra_tour/Models/Places.dart';
@@ -136,6 +134,27 @@ class _ExploreTheCityState extends State<ExploreTheCity> {
                                                             height: 180,
                                                             width: 320,
                                                             fit: BoxFit.fill,
+                                                            loadingBuilder:
+                                                                (context, child,
+                                                                    loadingProgress) {
+                                                              if (loadingProgress ==
+                                                                  null)
+                                                                return child;
+                                                              return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                width: 20,
+                                                                height: 20,
+                                                                child:
+                                                                    CircularProgressIndicator(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  strokeWidth:
+                                                                      2,
+                                                                ),
+                                                              ));
+                                                              // You can use LinearProgressIndicator or CircularProgressIndicator instead
+                                                            },
                                                           ),
                                                         ),
                                                       ),

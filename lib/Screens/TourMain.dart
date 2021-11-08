@@ -45,49 +45,51 @@ class _TourMainScreenState extends State<TourMainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(drawer: DrawerMenu(), appBar: Appbar(), body: TourPlan()
-//       body: Container(
-//         color: color,
-//         child: Column(children: <Widget>[
-//           LineImage(),
-//           // call class in TourAppbar.dart file
-//           FutureBuilder<List<MainScreen>>(
-//             future: getdata(),
-//             builder: (context, snapshot) {
-//               if (snapshot.hasData) {
-//                 return Expanded(
-//                   child: ListView.builder(
-//                       physics: ScrollPhysics(),
-//                       itemCount: snapshot.data!.length,
-//                       itemBuilder: (BuildContext context, Index) {
-//                         return MyContent(
-//                           route: myRoute(
-//                             type: int.parse(snapshot.data![Index].type),
-//                             index: Index,
-//                             srno: snapshot.data![Index].srno.toString(),
-//                           ),
-//                           myImage: snapshot.data![Index].image,
-//                           title: snapshot.data![Index].title,
-//                           icon: snapshot.data![Index].icon,
-//                           id: 1,
-//                           type: "1",
-//                         );
-//                       }),
-//                 );
-//               } else if (snapshot.hasError) {
-//                 return error404();
-//               }
+    return Scaffold(
+      drawer: DrawerMenu(),
+      appBar: Appbar(),
+      body: Container(
+        color: color,
+        child: Column(children: <Widget>[
+          LineImage(),
+          // call class in TourAppbar.dart file
+          FutureBuilder<List<MainScreen>>(
+            future: getdata(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Expanded(
+                  child: ListView.builder(
+                      physics: ScrollPhysics(),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (BuildContext context, Index) {
+                        return MyContent(
+                          route: myRoute(
+                            type: int.parse(snapshot.data![Index].type),
+                            index: Index,
+                            srno: snapshot.data![Index].srno.toString(),
+                          ),
+                          myImage: snapshot.data![Index].image,
+                          title: snapshot.data![Index].title,
+                          icon: snapshot.data![Index].icon,
+                          id: 1,
+                          type: "1",
+                        );
+                      }),
+                );
+              } else if (snapshot.hasError) {
+                return error404();
+              }
 
-//               // By default, show a loading spinner.
-//               return Center(child: CircularProgressIndicator());
-//             },
-//           ),
-//           LineImage(),
-//           // call class in TourAppbar.dart file
-//         ]),
-//       ),
-//       bottomNavigationBar: BottomNavigation(),
-        );
+              // By default, show a loading spinner.
+              return Text("");
+            },
+          ),
+          LineImage(),
+          // call class in TourAppbar.dart file
+        ]),
+      ),
+      bottomNavigationBar: BottomNavigation(),
+    );
   }
 }
 
@@ -129,11 +131,27 @@ class MyContent extends StatelessWidget {
           Container(
               height: 150,
               //padding: EdgeInsets.all(10),
-              child: FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: myImage,
+              child: Image.network(
+                myImage,
                 fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(
+                      child: SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
+                  ));
+                  // You can use LinearProgressIndicator or CircularProgressIndicator instead
+                },
               )
+              // FadeInImage.memoryNetwork(
+              //   placeholder: kTransparentImage,
+              //   image: myImage,
+              //   fit: BoxFit.cover,
+              // )
 
               // Image.asset(
               //   'assets/'+image,

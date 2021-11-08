@@ -302,7 +302,8 @@ class TourPlan extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
+                LineImage()
               ],
             ),
           ),

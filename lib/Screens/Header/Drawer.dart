@@ -48,51 +48,51 @@ class _DrawerMenuState extends State<DrawerMenu> {
               },
             ),
           ),
-          ListTile(
-            leading:
-                Icon(Icons.portable_wifi_off_outlined, color: Colors.brown),
-            title: Text(
-              'Profile1',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => TourMainScreen()));
-            },
-          ),
-          ExpansionTile(
-            title: Text(
-              'Book Your Ticket',
-              style: TextStyle(),
-            ),
-            children: <Widget>[
-              ListTile(
-                title: Text(
-                  ' Monuments',
-                  style: TextStyle(),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  ' Kurukshetra Haats and More..',
-                  style: TextStyle(),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  ' Tours and Packages',
-                  style: TextStyle(),
-                ),
-              )
-            ],
-          ),
-          ListTile(
-            leading: Icon(Icons.format_quote, color: Colors.brown),
-            title: Text(
-              "FAQ's",
-            ),
-            onTap: () {},
-          ),
+          // ListTile(
+          //   leading:
+          //       Icon(Icons.portable_wifi_off_outlined, color: Colors.brown),
+          //   title: Text(
+          //     'Profile1',
+          //     style: TextStyle(fontWeight: FontWeight.bold),
+          //   ),
+          //   onTap: () {
+          //     Navigator.push(context,
+          //         MaterialPageRoute(builder: (context) => TourMainScreen()));
+          //   },
+          // ),
+          // ExpansionTile(
+          //   title: Text(
+          //     'Book Your Ticket',
+          //     style: TextStyle(),
+          //   ),
+          //   children: <Widget>[
+          //     ListTile(
+          //       title: Text(
+          //         ' Monuments',
+          //         style: TextStyle(),
+          //       ),
+          //     ),
+          //     ListTile(
+          //       title: Text(
+          //         ' Kurukshetra Haats and More..',
+          //         style: TextStyle(),
+          //       ),
+          //     ),
+          //     ListTile(
+          //       title: Text(
+          //         ' Tours and Packages',
+          //         style: TextStyle(),
+          //       ),
+          //     )
+          //   ],
+          // ),
+          // ListTile(
+          //   leading: Icon(Icons.format_quote, color: Colors.brown),
+          //   title: Text(
+          //     "FAQ's",
+          //   ),
+          //   onTap: () {},
+          // ),
           ListTile(
             leading: Icon(Icons.search, color: Colors.brown),
             title: Text(

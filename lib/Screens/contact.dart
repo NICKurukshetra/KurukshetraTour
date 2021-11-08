@@ -34,14 +34,14 @@ class contactcls extends StatelessWidget {
                             Text(
                               "Address",
                               style: TextStyle(
-                                  fontSize: 30, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 15),
                               child: Text(
                                 "Urban Estate, Sector 7, Kurukshetra, Haryana 136118",
                                 style:
-                                    TextStyle(fontSize: 20, color: Colors.grey),
+                                    TextStyle(fontSize: 15, color: Colors.grey),
                               ),
                             ),
                             Padding(
@@ -49,7 +49,7 @@ class contactcls extends StatelessWidget {
                               child: Text(
                                 "Contact",
                                 style: TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.bold),
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Padding(
@@ -57,7 +57,7 @@ class contactcls extends StatelessWidget {
                               child: Text(
                                 " 01744-222696,",
                                 style:
-                                    TextStyle(fontSize: 20, color: Colors.grey),
+                                    TextStyle(fontSize: 15, color: Colors.grey),
                               ),
                             ),
                             Padding(
@@ -65,7 +65,7 @@ class contactcls extends StatelessWidget {
                               child: Text(
                                 "Email",
                                 style: TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.bold),
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Padding(
@@ -73,24 +73,24 @@ class contactcls extends StatelessWidget {
                               child: Text(
                                 "diokrk@gov.in",
                                 style:
-                                    TextStyle(fontSize: 20, color: Colors.grey),
+                                    TextStyle(fontSize: 15, color: Colors.grey),
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    LineImage(),
 
                     Container(
                       padding: EdgeInsets.all(10),
                       alignment: Alignment.topLeft,
                       child: Image.asset(
-                        'assets/imag/mapImage.jpg',
+                        'assets/images/mapImage.jpg',
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
-                    ), // call class in TourAppbar.dart file
+                    ),
+                    LineImage(), // call class in TourAppbar.dart file
                   ],
                 ),
               ),

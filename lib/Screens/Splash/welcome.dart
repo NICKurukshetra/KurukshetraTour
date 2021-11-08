@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:kurukshetra_tour/Screens/TourMain.dart';
+
+import 'package:kurukshetra_tour/Screens/locslider.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -15,14 +16,12 @@ class _MyHomePageState extends State<MyHomePage> {
     Timer(
         Duration(seconds: 5),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => TourMainScreen())));
-   }
+            context, MaterialPageRoute(builder: (context) => LocSlider())));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-        
         body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -32,7 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
             "Kurukshetra Darshan",
             style: TextStyle(
               color: Colors.brown[900],
-            
               fontSize: 22,
             ),
           )),
@@ -41,7 +39,10 @@ class _MyHomePageState extends State<MyHomePage> {
               //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 //FlutterLogo(size: 100),
-                Image.asset("assets/images/mahabharata.png",width: MediaQuery.of(context).size.width/1.5,),
+                Image.asset(
+                  "assets/images/mahabharata.png",
+                  width: MediaQuery.of(context).size.width / 1.5,
+                ),
                 Center(
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         Text(
                           "देखो मेरा कुरुक्षेत्र",
                           style: TextStyle(
-                         
                             fontSize: 15,
                           ),
                         ),
@@ -64,7 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         Text(
                           "Dekho Mera Kurukshetra",
                           style: TextStyle(
-                          
                             fontSize: 15,
                           ),
                         ),

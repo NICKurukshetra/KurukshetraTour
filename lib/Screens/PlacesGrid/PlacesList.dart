@@ -116,27 +116,38 @@ class MyContent extends StatelessWidget {
                   builder: (context) => PlacesDetail(
                         data: data,
                         index: id,
-                      ))
-                      );
+                      )));
         },
         child: Padding(
           padding: const EdgeInsets.only(left: 8.0, right: 8.0),
           child: Column(
             children: [
-              FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: data[id].image,
-                fit: BoxFit.fill,
+              // FadeInImage.memoryNetwork(
+              //   placeholder: kTransparentImage,
+              //   image: data[id].image,
+              //   fit: BoxFit.fill,
+              //   width: MediaQuery.of(context).size.width / 2,
+              //   height: MediaQuery.of(context).size.height / 8,
+              // ),
+              Image.network(
+                data[id].image,
                 width: MediaQuery.of(context).size.width / 2,
                 height: MediaQuery.of(context).size.height / 8,
+                fit: BoxFit.fill,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(
+                      child: SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                      strokeWidth: 2,
+                    ),
+                  ));
+                  // You can use LinearProgressIndicator or CircularProgressIndicator instead
+                },
               ),
-              // Image.network(
-
-              //   myImage,
-              //   fit: BoxFit.fill,
-              //   width: 400,
-              //   height: 100,
-              // ),
               Wrap(children: [
                 Align(
                   alignment: Alignment.bottomLeft,

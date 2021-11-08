@@ -3,6 +3,7 @@ import 'package:kurukshetra_tour/Screens/AboutUs.dart';
 import 'package:kurukshetra_tour/Screens/MultiSlider/ExploreTheCity.dart';
 import 'package:kurukshetra_tour/Screens/PlacesGrid/PlacesList.dart';
 import 'package:kurukshetra_tour/Screens/TourMain.dart';
+import '../TourMain.dart';
 
 class myRoute extends StatelessWidget {
   int type;

@@ -1,26 +1,19 @@
-import 'package:flutter/cupertino.dart';
-import 'package:kurukshetra_tour/Screens/TourMain.dart';
-import 'package:kurukshetra_tour/Screens/contact.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:kurukshetra_tour/Screens/AppList.dart';
+// import 'package:kurukshetra_tour/Screens/TourMain.dart';
 
-class Comman
-{
-  String id="1";
-Widget getdate()
-{
+// class Comman {
+//   Widget getdate(String id) {
+//     switch (id) {
+//       case "1":
+//         {
+//           return AppList();
+//         }
 
-switch (id) {
-  case :"1"
-  return contactcls();
-    
-    break;
-  default:
-}
-
-return TourMainScreen();
-
-
-}
-  
-}
-
-}
+//       default:
+//         {
+//           return TourMainScreen();
+//         }
+//     }
+//   }
+// }
