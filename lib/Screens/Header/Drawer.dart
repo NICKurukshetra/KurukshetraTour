@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Screens/TourMain.dart';
 import 'package:kurukshetra_tour/Screens/contact.dart';
 import 'package:kurukshetra_tour/Screens/feedback.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Disclaimer.dart';
 import '../StaySafe.dart';
@@ -12,6 +13,10 @@ class DrawerMenu extends StatefulWidget {
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
+  void lanuchURL(String str) {
+    launch(str);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -22,11 +27,12 @@ class _DrawerMenuState extends State<DrawerMenu> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  width: 90.0,
-                  height: 90.0,
-                  child: Image.network(
-                      'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2020/07/2020071774.png'),
-                ),
+                    width: 90.0,
+                    height: 90.0,
+                    child: Icon(
+                      Icons.supervised_user_circle_sharp,
+                      size: 70,
+                    )),
                 Divider(
                   height: 5,
                   color: Colors.red,
@@ -103,16 +109,16 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   context, MaterialPageRoute(builder: (context) => StaySafe()));
             },
           ),
-          ListTile(
-            leading: Icon(Icons.email, color: Colors.brown),
-            title: Text(
-              "Foriegn Embassies",
-            ),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => StaySafe()));
-            },
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.email, color: Colors.brown),
+          //   title: Text(
+          //     "Foriegn Embassies",
+          //   ),
+          //   onTap: () {
+          //     Navigator.push(
+          //         context, MaterialPageRoute(builder: (context) => StaySafe()));
+          //   },
+          // ),
           ListTile(
             leading: Icon(Icons.call, color: Colors.brown),
             title: Text(
@@ -156,22 +162,24 @@ class _DrawerMenuState extends State<DrawerMenu> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.network(
-                'https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg',
-                width: 30,
-              ),
-              Image.network(
-                'https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png',
-                width: 30,
-              ),
-              Image.network(
-                'https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2019/01/2019010979.jpg',
-                width: 40,
-              ),
-              Image.network(
-                'https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Instagram_colored_svg_1-512.png',
-                width: 30,
-              )
+              IconButton(
+                  onPressed: () {
+                    lanuchURL(
+                        "https://www.facebook.com/DistrictAdministrationKurukshetra");
+                  },
+                  icon: Icon(
+                    Icons.facebook,
+                    color: Colors.blue,
+                  )),
+              IconButton(
+                  onPressed: () {
+                    lanuchURL(
+                        "https://www.youtube.com/c/InternationalGitaMahotsav");
+                  },
+                  icon: Icon(
+                    Icons.video_library_outlined,
+                    color: Colors.red,
+                  )),
             ],
           )
         ],

@@ -53,10 +53,7 @@ class _LocSliderState extends State<LocSlider> {
               "data",
               style: TextStyle(fontSize: 30, color: Colors.white),
             ),
-            Image.asset(
-              list[0],
-              fit: BoxFit.cover,
-            ),
+            Image.asset(list[0], fit: BoxFit.fitHeight),
           ],
         ),
       ),

@@ -8,6 +8,8 @@ import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
 import 'package:kurukshetra_tour/Models/Places.dart';
 
 import 'package:kurukshetra_tour/Screens/Error/404.dart';
+import 'package:kurukshetra_tour/Screens/Footer/footer.dart';
+import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
 
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
 import 'package:kurukshetra_tour/Screens/Header/header.dart';
@@ -51,7 +53,7 @@ class _PlacesGridState extends State<PlacesGrid> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        drawer: Drawer(),
+        drawer: DrawerMenu(),
         appBar: Appbar(),
         body: Column(
           children: [

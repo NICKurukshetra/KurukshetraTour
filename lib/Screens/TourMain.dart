@@ -8,6 +8,7 @@ import 'package:kurukshetra_tour/Models/ModMainApp.dart';
 import 'package:kurukshetra_tour/Screens/6way.dart';
 
 import 'package:kurukshetra_tour/Screens/Error/404.dart';
+import 'package:kurukshetra_tour/Screens/Footer/footer.dart';
 import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
 
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
@@ -15,7 +16,6 @@ import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
 import 'package:kurukshetra_tour/Screens/Header/header.dart';
 
 import 'package:kurukshetra_tour/Screens/Route/myRoute.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 List<MainScreen> popmap = [];
 
@@ -66,7 +66,7 @@ class _TourMainScreenState extends State<TourMainScreen> {
                           route: myRoute(
                             type: int.parse(snapshot.data![Index].type),
                             index: Index,
-                            srno: snapshot.data![Index].srno.toString(),
+                            srno: snapshot.data![Index].id.toString(),
                           ),
                           myImage: snapshot.data![Index].image,
                           title: snapshot.data![Index].title,

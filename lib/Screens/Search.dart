@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
 import 'package:kurukshetra_tour/Models/Places.dart';
 import 'package:kurukshetra_tour/Screens/AboutUs.dart';
+import 'package:kurukshetra_tour/Screens/Footer/footer.dart';
 
 import 'Header/Drawer.dart';
 import 'Header/header.dart';
