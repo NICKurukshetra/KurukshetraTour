@@ -3,17 +3,23 @@
 import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Models/Places.dart';
 import 'package:kurukshetra_tour/Screens/Footer/footer.dart';
+import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
 import 'package:kurukshetra_tour/Screens/Header/header.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PlacesDetail extends StatelessWidget {
   List<Places> data = [];
   int index;
   PlacesDetail({required this.data, required this.index});
+  void lanuchURL1() {
+    launch("https://kurukshetra.gov.in/");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: DrawerMenu(),
       appBar: Appbar(),
       body: Container(
         child: Column(children: <Widget>[
@@ -75,16 +81,20 @@ class PlacesDetail extends StatelessWidget {
                                 data[index].nearby,
                                 style: TextStyle(fontSize: 12),
                               )),
-                          Container(
-                              padding: EdgeInsets.all(10),
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                  'For more details visit:' + data[index].link,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                  ))),
+                          GestureDetector(
+                            onTap: lanuchURL1,
+                            child: Container(
+                                padding: EdgeInsets.all(10),
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                    'For more details visit:' +
+                                        data[index].link,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold,
+                                    ))),
+                          ),
                           GestureDetector(
                             child: Container(
                                 padding: EdgeInsets.all(10),

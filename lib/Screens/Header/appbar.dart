@@ -23,7 +23,7 @@ class Appbar extends StatelessWidget with PreferredSizeWidget {
         GestureDetector(
             child: Icon(
               CupertinoIcons.search,
-              size: 25,
+              size: 22,
               //color: Colors.blue,
             ),
             onTap: () {

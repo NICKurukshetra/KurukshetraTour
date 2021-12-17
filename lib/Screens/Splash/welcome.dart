@@ -21,6 +21,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final textScale = MediaQuery.of(context).textScaleFactor;
+    print(textScale);
     return Scaffold(
         body: Center(
       child: Column(
@@ -87,12 +89,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ).createShader(
                 Rect.fromLTWH(0, 0, size.width, size.height),
               ),
-              child: Text(
-                'District Administration Kurukshetra',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+              child: Center(
+                child: Text(
+                  'District Administration Kurukshetra',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      //fontSize: MediaQuery.of(context).size.width * 0.05
+                      fontSize: (textScale >= 1) ? 14 : 20 * 1),
+                  //fontSize: MediaQuery.of(context).devicePixelRatio * 7),
                 ),
               ),
             ),

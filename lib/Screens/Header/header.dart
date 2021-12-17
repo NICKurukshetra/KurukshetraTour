@@ -42,9 +42,9 @@ class _PopUpState extends State<PopUp> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => myRoute(
-                                  type: choice.id,
+                                  type: int.parse(choice.type),
                                   index: popmap.indexOf(choice),
-                                  srno: choice.srno.toString(),
+                                  srno: choice.id.toString(),
                                 )));
                   },
                   child: Row(
@@ -81,8 +81,6 @@ class _PopUpState extends State<PopUp> {
     );
   }
 }
-
-
 
 // BottomNavigation widget Code
 // class BottomNavigation extends StatelessWidget {
