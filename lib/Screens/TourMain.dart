@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 import 'package:dotted_line/dotted_line.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
 import 'package:kurukshetra_tour/Models/ModMainApp.dart';
-import 'package:kurukshetra_tour/Screens/6way.dart';
+
 
 import 'package:kurukshetra_tour/Screens/Error/404.dart';
 import 'package:kurukshetra_tour/Screens/Footer/footer.dart';

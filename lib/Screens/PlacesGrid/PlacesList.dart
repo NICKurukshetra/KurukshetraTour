@@ -14,19 +14,24 @@ import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
 import 'package:kurukshetra_tour/Screens/Header/header.dart';
 import 'package:kurukshetra_tour/Screens/PlacesDetails/PlacesDetail.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 List<Places> data = [];
 
 String maintitle = "";
 String headerimage = "";
+bool value = false;
 const color = const Color(0xffb796d5f);
 
 class PlacesGrid extends StatefulWidget {
   final String title;
   final String image;
+  final bool svalue;
   String id;
-  PlacesGrid({required this.title, required this.image, required this.id});
+  PlacesGrid(
+      {required this.title,
+      required this.image,
+      required this.id,
+      required this.svalue});
 
   @override
   State<PlacesGrid> createState() => _PlacesGridState();
@@ -38,6 +43,7 @@ class _PlacesGridState extends State<PlacesGrid> {
     // TODO: implement initState
     maintitle = widget.title;
     headerimage = widget.image;
+    value = widget.svalue;
     getdate();
     super.initState();
   }
@@ -95,13 +101,6 @@ class _PlacesGridState extends State<PlacesGrid> {
 }
 
 class MyContent extends StatelessWidget {
-  // String title;
-  // final String myImage;
-  // String desc;
-  // String timeing;
-  // String map;
-  // String nearby;
-  // String link;
   late int id;
 
   MyContent({
@@ -110,60 +109,102 @@ class MyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => PlacesDetail(
-                        data: data,
-                        index: id,
-                      )));
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-          child: Column(
-            children: [
-              // FadeInImage.memoryNetwork(
-              //   placeholder: kTransparentImage,
-              //   image: data[id].image,
-              //   fit: BoxFit.fill,
-              //   width: MediaQuery.of(context).size.width / 2,
-              //   height: MediaQuery.of(context).size.height / 8,
-              // ),
-              Image.network(
-                data[id].image,
-                width: MediaQuery.of(context).size.width / 2,
-                height: MediaQuery.of(context).size.height / 8,
-                fit: BoxFit.fill,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                      child: SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                      color: Colors.black,
-                      strokeWidth: 2,
+    return value
+        ? Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              child: new Container(
+                height: 230,
+                decoration: new BoxDecoration(
+                  color: Colors.black,
+                  image: new DecorationImage(
+                    fit: BoxFit.cover,
+                    colorFilter: new ColorFilter.mode(
+                        Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                    image: new NetworkImage(
+                      data[id].image,
                     ),
-                  ));
-                  // You can use LinearProgressIndicator or CircularProgressIndicator instead
-                },
-              ),
-              Wrap(children: [
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    data[id].title,
-                    textAlign: TextAlign.start,
-                    maxLines: 2,
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(fontSize: 14),
                   ),
                 ),
-              ]),
-            ],
-          ),
-        ));
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    data[id].icon.trim().length > 0
+                        ? Image.network(
+                            data[id].icon,
+                            height: 30,
+                            color: Colors.white,
+                          )
+                        : Container(),
+                    Text(
+                      data[id].title,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.fade,
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PlacesDetail(
+                              data: data,
+                              index: id,
+                            )));
+              },
+            ),
+          )
+        : GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PlacesDetail(
+                            data: data,
+                            index: id,
+                          )));
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+              child: Column(
+                children: [
+                  Image.network(
+                    data[id].image,
+                    width: MediaQuery.of(context).size.width / 2,
+                    height: MediaQuery.of(context).size.height / 8,
+                    fit: BoxFit.fill,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                          child: SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          color: Colors.black,
+                          strokeWidth: 2,
+                        ),
+                      ));
+                      // You can use LinearProgressIndicator or CircularProgressIndicator instead
+                    },
+                  ),
+                  Wrap(children: [
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        data[id].title,
+                        textAlign: TextAlign.start,
+                        maxLines: 2,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ),
+                  ]),
+                ],
+              ),
+            ));
   }
 }

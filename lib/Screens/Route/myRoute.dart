@@ -9,18 +9,37 @@ class myRoute extends StatelessWidget {
   int type;
   int index;
   String srno;
-  myRoute({required this.type, required this.index, required this.srno});
+
+  myRoute({
+    required this.type,
+    required this.index,
+    required this.srno,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (type == 1) {
-      return AboutUs();
+      return AboutUs(
+        title: popmap[index].title,
+        image: popmap[index].image,
+        id: srno,
+        svalue: false,
+      );
     }
     if (type == 2) {
       return PlacesGrid(
         title: popmap[index].title,
         image: popmap[index].image,
         id: srno,
+        svalue: false,
+      );
+    }
+    if (type == 4) {
+      return PlacesGrid(
+        title: popmap[index].title,
+        image: popmap[index].image,
+        id: srno,
+        svalue: true,
       );
     }
     if (type == 3) {

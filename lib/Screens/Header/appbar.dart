@@ -30,12 +30,12 @@ class Appbar extends StatelessWidget with PreferredSizeWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SearchScreen()));
             }),
-        IconButton(
-            icon: Icon(
-              CupertinoIcons.cart,
-              size: 22,
-            ),
-            onPressed: () {}),
+        // IconButton(
+        //     icon: Icon(
+        //       CupertinoIcons.cart,
+        //       size: 22,
+        //     ),
+        //     onPressed: () {}),
       ],
       title: PopUp(),
     );
