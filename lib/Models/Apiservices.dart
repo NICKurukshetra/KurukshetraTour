@@ -1,19 +1,15 @@
-
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
-
 class APIServices {
-   Future fetchmainapp() async {
-    return await http
-        .get(Uri.parse('http://103.87.24.58/tour/AppMain'));
+  Future fetchmainapp() async {
+    return await http.get(Uri.parse('http://103.87.24.58/tour/AppMain'));
   }
 
   Future fetchappPlaces() async {
-    return await http
-        .get(Uri.parse('http://103.87.24.58/tour/Places'));
+    return await http.get(Uri.parse('http://103.87.24.58/tour/Places'));
   }
 
   /* static Future postUsers(Users users) async {
@@ -31,9 +27,4 @@ class APIServices {
     return res.statusCode;
   } */
 
-   
-
-  
-
-  
 }

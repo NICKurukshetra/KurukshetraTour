@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Screens/Footer/footer.dart';
 import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
+import 'package:kurukshetra_tour/Screens/Nearby.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Header/header.dart';
@@ -79,7 +80,13 @@ class Ways extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Nearby()),
+                                    );
+                                  },
                                 ),
                               ],
                             ),
