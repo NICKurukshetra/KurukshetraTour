@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Models/Methods/getMainScreen.dart';
 import 'package:kurukshetra_tour/Models/ModMainApp.dart';
 
-
 import 'package:kurukshetra_tour/Screens/Error/404.dart';
 import 'package:kurukshetra_tour/Screens/Footer/footer.dart';
 import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
@@ -27,6 +26,7 @@ class TourMainScreen extends StatefulWidget {
 }
 
 const color = const Color(0xffb796d5f);
+//const color = const Color(0xffb796d5f);
 
 //final Color color = HexColor.fromHex('#');
 class _TourMainScreenState extends State<TourMainScreen> {
@@ -51,7 +51,7 @@ class _TourMainScreenState extends State<TourMainScreen> {
       body: Container(
         color: color,
         child: Column(children: <Widget>[
-          LineImage(),
+          //  LineImage(),
           // call class in TourAppbar.dart file
           FutureBuilder<List<MainScreen>>(
             future: getdata(),
@@ -71,8 +71,6 @@ class _TourMainScreenState extends State<TourMainScreen> {
                           myImage: snapshot.data![Index].image,
                           title: snapshot.data![Index].title,
                           icon: snapshot.data![Index].icon,
-                          id: 1,
-                          type: "1",
                         );
                       }),
                 );
@@ -84,7 +82,7 @@ class _TourMainScreenState extends State<TourMainScreen> {
               return Text("");
             },
           ),
-          LineImage(),
+          //  LineImage(),
           // call class in TourAppbar.dart file
         ]),
       ),
@@ -97,16 +95,13 @@ class MyContent extends StatelessWidget {
   String title;
   String myImage;
   String icon;
-  String type;
-  int id;
+
   Widget route;
 
   MyContent(
       {required this.title,
       required this.icon,
       required this.myImage,
-      required this.id,
-      required this.type,
       required this.route});
 
   @override

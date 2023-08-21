@@ -26,13 +26,19 @@ class _DrawerMenuState extends State<DrawerMenu> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                //mahabharata.png
+                // Container(
+                //     width: 90.0,
+                //     height: 90.0,
+                //     child: Icon(
+                //       Icons.ac_unit,
+                //       //  Icons.supervised_user_circle_sharp,
+                //       size: 70,
+                //     )),
                 Container(
-                    width: 90.0,
-                    height: 90.0,
-                    child: Icon(
-                      Icons.supervised_user_circle_sharp,
-                      size: 70,
-                    )),
+                    width: 120.0,
+                    height: 100.0,
+                    child: Image.asset('assets/images/mahabharata.png')),
                 Divider(
                   height: 5,
                   color: Colors.red,
@@ -100,7 +106,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
           //   onTap: () {},
           // ),
           ListTile(
-            leading: Icon(Icons.search, color: Colors.brown),
+            leading: Icon(Icons.book_rounded, color: Colors.brown),
             title: Text(
               "COVID Guidelines",
             ),
@@ -125,10 +131,11 @@ class _DrawerMenuState extends State<DrawerMenu> {
               "Important Number",
             ),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => StaySafe()));
+              lanuchURL(
+                  "https://kurukshetra.gov.in/must-to-know/#1649869118496-72a45fd5-dc66");
             },
           ),
+
           ListTile(
             leading: Icon(Icons.contact_page, color: Colors.brown),
             title: Text(
@@ -140,7 +147,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.facebook, color: Colors.brown),
+            leading: Icon(Icons.rate_review, color: Colors.brown),
             title: Text(
               "Feedback",
             ),
@@ -150,7 +157,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.facebook, color: Colors.brown),
+            leading: Icon(Icons.wrong_location, color: Colors.brown),
             title: Text(
               "Disclaimer",
             ),
@@ -159,27 +166,44 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   MaterialPageRoute(builder: (context) => Disclaimer()));
             },
           ),
+          ListTile(
+            leading: Icon(Icons.video_library_sharp, color: Colors.brown),
+            title: Text(
+              "Videos",
+            ),
+            onTap: () {
+              lanuchURL("https://kurukshetra.gov.in/videos/");
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.facebook_outlined, color: Colors.brown),
+            title: Text(
+              "Social Media",
+            ),
+            onTap: () {
+              lanuchURL("https://kurukshetra.gov.in/latest-todays/#Social-id");
+            },
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              IconButton(
-                  onPressed: () {
-                    lanuchURL(
-                        "https://www.facebook.com/DistrictAdministrationKurukshetra");
-                  },
-                  icon: Icon(
-                    Icons.facebook,
-                    color: Colors.blue,
-                  )),
-              IconButton(
-                  onPressed: () {
-                    lanuchURL(
-                        "https://www.youtube.com/c/InternationalGitaMahotsav");
-                  },
-                  icon: Icon(
-                    Icons.video_library_outlined,
-                    color: Colors.red,
-                  )),
+              // IconButton(
+              //     onPressed: () {
+              //       lanuchURL(
+              //           "https://www.facebook.com/DistrictAdministrationKurukshetra");
+              //     },
+              //     icon: Icon(
+              //       Icons.facebook,
+              //       color: Colors.blue,
+              //     )),
+              // IconButton(
+              //     onPressed: () {
+              //       lanuchURL("https://kurukshetra.gov.in/videos/");
+              //     },
+              //     icon: Icon(
+              //       Icons.video_library_outlined,
+              //       color: Colors.red,
+              //     )),
             ],
           )
         ],

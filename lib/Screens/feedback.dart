@@ -47,7 +47,7 @@ class _FeedBackState extends State<FeedBack> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    LineImage(), // call class in TourAppbar.dart file
+                    //  LineImage(), // call class in TourAppbar.dart file
                     Expanded(
                       flex: 1,
                       child: Container(
@@ -326,8 +326,9 @@ class _FeedBackState extends State<FeedBack> {
                                               // you'd often call a server or save the information in a database.
 
                                               // ignore: deprecated_member_use
-                                              Scaffold.of(context).showSnackBar(
-                                                  SnackBar(
+
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
                                                       content: Text(
                                                           'Feesdback submitted successfully')));
                                             }
@@ -354,7 +355,7 @@ class _FeedBackState extends State<FeedBack> {
                       ),
                     ),
 
-                    LineImage(), // call class in TourAppbar.dart file
+                    //  LineImage(), // call class in TourAppbar.dart file
                   ],
                 ),
               ),

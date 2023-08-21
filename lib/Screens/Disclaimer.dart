@@ -25,7 +25,7 @@ class Disclaimer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      LineImage(), // call class in TourAppbar.dart file
+                     // LineImage(), // call class in TourAppbar.dart file
                       HeaderSinglePage(),
                       Padding(
                         padding: const EdgeInsets.all(28.0),
@@ -73,7 +73,7 @@ class Disclaimer extends StatelessWidget {
                           ),
                         ),
                       ),
-                      LineImage()
+                     // LineImage()
 
                       // call class in TourAppbar.dart file
                     ],

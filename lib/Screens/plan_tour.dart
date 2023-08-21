@@ -22,7 +22,7 @@ class PlanyourTour extends StatelessWidget {
           child: Container(
             child: Column(
               children: [
-                LineImage(),
+              //  LineImage(),
                 HeaderSinglePage(
                     maintitle: "Plan Your Tour",
                     headerimage:
@@ -391,7 +391,7 @@ class PlanyourTour extends StatelessWidget {
                     ),
                   ),
                 ),
-                LineImage(),
+              //  LineImage(),
               ],
             ),
           ),

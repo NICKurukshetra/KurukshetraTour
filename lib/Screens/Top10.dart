@@ -6,6 +6,7 @@ import 'package:kurukshetra_tour/Screens/Footer/footer.dart';
 import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
 
+import 'package:webview_flutter/webview_flutter.dart';
 import 'Header/header.dart';
 
 class Top10 extends StatelessWidget {
@@ -18,7 +19,7 @@ class Top10 extends StatelessWidget {
       appBar: Appbar(),
       body: SingleChildScrollView(
         child: Column(children: [
-          LineImage(), // call class in TourAppbar.dart file
+          //  LineImage(), // call class in TourAppbar.dart file
           HeaderSinglePage(
               maintitle: "Top 10 Kurukshetra",
               headerimage:
@@ -60,7 +61,9 @@ class Top10 extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                                  WebViewLoad();
+                                },
                               ),
                             ),
                           )),
@@ -256,10 +259,27 @@ class Top10 extends StatelessWidget {
               ),
             ],
           ),
-          LineImage()
+
+          // LineImage()
         ]),
       ),
       bottomNavigationBar: BottomNavigation(),
     );
+  }
+}
+
+class WebViewLoad extends StatefulWidget {
+  WebViewLoadUI createState() => WebViewLoadUI();
+}
+
+class WebViewLoadUI extends State<WebViewLoad> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text('WebView in Flutter')),
+        body: WebView(
+          initialUrl: 'https://google.com',
+          javascriptMode: JavascriptMode.unrestricted,
+        ));
   }
 }

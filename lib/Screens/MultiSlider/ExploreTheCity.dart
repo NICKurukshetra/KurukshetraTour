@@ -48,7 +48,7 @@ class _ExploreTheCityState extends State<ExploreTheCity> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            LineImage(), // call class in TourAppbar.dart file
+           // LineImage(), // call class in TourAppbar.dart file
             HeaderSinglePage(
                 maintitle: widget.title, headerimage: widget.image),
             Expanded(
@@ -198,7 +198,7 @@ class _ExploreTheCityState extends State<ExploreTheCity> {
                   }),
             ),
 
-            LineImage(), // call class in TourAppbar.dart file
+            //LineImage(), // call class in TourAppbar.dart file
           ],
         ),
       ),

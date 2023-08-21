@@ -7,14 +7,11 @@ import 'package:kurukshetra_tour/Models/Places.dart';
 import 'package:kurukshetra_tour/Screens/Footer/footer.dart';
 import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
 import 'package:kurukshetra_tour/Screens/Header/appbar.dart';
-import 'package:kurukshetra_tour/Screens/Header/header.dart';
-import 'package:kurukshetra_tour/Screens/PlacesDetails/pdfview.dart';
-import 'package:kurukshetra_tour/Screens/PlacesGrid/PlacesList.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PlacesDetail extends StatefulWidget {
-  List<Places> data = [];
+  List<Places> data;
   int index;
   PlacesDetail({required this.data, required this.index});
 
@@ -49,15 +46,24 @@ class _PlacesDetailState extends State<PlacesDetail> {
               // crossAxisAlignment: CrossAxisAlignment.center,
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                LineImage(), // call class in TourAppbar.dart file
+                // LineImage(), // call class in TourAppbar.dart file
                 Expanded(
                   flex: 1,
                   child: Stack(
                     children: <Widget>[
                       WebView(
                         key: _key,
-                        initialUrl: data[widget.index].link,
+                        initialUrl: widget.data[widget.index].link,
                         javascriptMode: JavascriptMode.unrestricted,
+                        navigationDelegate: (NavigationRequest request) {
+                          if (request.url
+                              .startsWith('https://www.youtube.com/')) {
+                            print('blocking navigation to $request}');
+                            return NavigationDecision.prevent;
+                          }
+                          print('allowing navigation to $request');
+                          return NavigationDecision.navigate;
+                        },
                         onPageFinished: (finish) {
                           setState(() {
                             isLoading = false;
@@ -156,7 +162,7 @@ class _PlacesDetailState extends State<PlacesDetail> {
                   // ),
                 ),
 
-                LineImage(), // call class in TourAppbar.dart file
+                // LineImage(), // call class in TourAppbar.dart file
               ],
             ),
           ),

@@ -19,7 +19,7 @@ class Faq extends StatelessWidget {
       body: Container(
         child: Column(
           children: [
-            LineImage(), // call class in TourAppbar.dart file
+          //  LineImage(), // call class in TourAppbar.dart file
             HeaderSinglePage(
                 maintitle: "Frequently Asked Questions",
                 headerimage:
@@ -143,7 +143,7 @@ class Faq extends StatelessWidget {
                 ),
               ),
             ),
-            LineImage(),
+          //  LineImage(),
           ],
         ),
       ),

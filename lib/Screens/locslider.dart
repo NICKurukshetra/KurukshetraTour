@@ -24,7 +24,7 @@ class _LocSliderState extends State<LocSlider> {
     list.shuffle();
     super.initState();
     Timer(
-        Duration(seconds: 10),
+        Duration(seconds: 5),
         () => Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => TourMainScreen())));
   }
@@ -34,7 +34,7 @@ class _LocSliderState extends State<LocSlider> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: TweenAnimationBuilder(
-        duration: const Duration(milliseconds: 3000),
+        duration: const Duration(milliseconds: 2000),
         curve: Curves.easeInOutCirc,
         tween: Tween<double>(begin: 0.1, end: 1.0),
         builder: (context, double value, child) {

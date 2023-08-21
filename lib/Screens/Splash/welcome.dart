@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:kurukshetra_tour/Screens/locslider.dart';
+import 'package:new_version/new_version.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -13,11 +14,37 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    // Instantiate NewVersion manager object (Using GCP Console app as example)
+    final newVersion = NewVersion(
+      iOSId: 'com.nic.kurukshetra_tour',
+      androidId: 'com.nic.kurukshetra_tour',
+    );
+
+    // You can let the plugin handle fetching the status and showing a dialog,
+    // or you can fetch the status and display your own dialog, or no dialog.
+
     Timer(
-        Duration(seconds: 5),
+        Duration(seconds: 2),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LocSlider())));
   }
+
+  // basicStatusCheck(NewVersion newVersion) {
+  //   newVersion.showAlertIfNecessary(context: context);
+  // }
+
+  // advancedStatusCheck(NewVersion newVersion) async {
+  //   final status = await newVersion.getVersionStatus();
+  //   if (status != null) {
+
+  //     newVersion.showUpdateDialog(
+  //       context: context,
+  //       versionStatus: status,
+  //       dialogTitle: 'Update Available',
+  //       dialogText: 'Please updated your app',
+  //     );
+  //   }
+  //}
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +106,9 @@ class _MyHomePageState extends State<MyHomePage> {
             //height: MediaQuery.of(context).size.width / 50.5,
             //width: MediaQuery.of(context).size.width / 50.5,
           ),
+          // SizedBox(
+          //   height: 30,
+          // ),
           Center(
             child: ShaderMask(
               blendMode: BlendMode.modulate,
@@ -101,6 +131,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/gov_logo.jpg',
+                height: 70,
+              ),
+              Image.asset(
+                'assets/images/kdblogo.jpg',
+                height: 70,
+              ),
+              Image.asset(
+                'assets/images/niclogo.jpg',
+              ),
+            ],
           ),
         ],
       ),

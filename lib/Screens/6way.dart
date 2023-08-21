@@ -27,7 +27,7 @@ class Ways extends StatelessWidget {
           margin: EdgeInsets.zero,
           child: Column(
             children: [
-              LineImage(),
+              //  LineImage(),
               HeaderSinglePage(
                   maintitle: "Discover Kurukshetra",
                   headerimage:
@@ -332,7 +332,7 @@ class Ways extends StatelessWidget {
                   ],
                 ),
               ),
-              LineImage(),
+              //  LineImage(),
             ],
           ),
         ),

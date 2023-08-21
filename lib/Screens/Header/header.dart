@@ -131,12 +131,12 @@ class _PopUpState extends State<PopUp> {
 //   }
 // }
 
-class LineImage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset('assets/images/outline.jpeg', fit: BoxFit.contain);
-  }
-}
+// class LineImage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Image.asset('assets/images/outline.jpeg', fit: BoxFit.contain);
+//   }
+// }
 
 class CustomClipPath extends CustomClipper<Path> {
   var radius = 1.0;

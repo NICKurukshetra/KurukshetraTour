@@ -25,7 +25,7 @@ class StaySafe extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    LineImage(),
+                  //  LineImage(),
                      // call class in TourAppbar.dart file
                     Expanded(
                       flex: 1,
@@ -457,7 +457,7 @@ class StaySafe extends StatelessWidget {
                       ),
                     ),
 
-                    LineImage(), // call class in TourAppbar.dart file
+                   // LineImage(), // call class in TourAppbar.dart file
                   ],
                 ),
               ),

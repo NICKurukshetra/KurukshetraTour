@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:kurukshetra_tour/Screens/Footer/footer.dart';
 import 'package:kurukshetra_tour/Screens/Header/Drawer.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'Header/appbar.dart';
 import 'Header/header.dart';
 
@@ -24,7 +25,7 @@ class contactcls extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    LineImage(), // call class in TourAppbar.dart file
+                    //  LineImage(), // call class in TourAppbar.dart file
                     HeaderSinglePage(),
                     Padding(
                       padding: const EdgeInsets.all(28.0),
@@ -40,7 +41,7 @@ class contactcls extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 15),
                               child: Text(
-                                "Urban Estate, Sector 7, Kurukshetra, Haryana 136118",
+                                "D.C. office,  Mini Secretariat, Sector 10, Kurukshetra, Haryana-136118",
                                 style:
                                     TextStyle(fontSize: 15, color: Colors.grey),
                               ),
@@ -82,16 +83,19 @@ class contactcls extends StatelessWidget {
                       ),
                     ),
 
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      alignment: Alignment.topLeft,
-                      child: Image.asset(
-                        'assets/images/mapImage.jpg',
-                        width: double.infinity,
-                        fit: BoxFit.cover,
+                    InkWell(
+                      onTap: mappdirc,
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        alignment: Alignment.topLeft,
+                        child: Image.asset(
+                          'assets/images/mapImage.jpg',
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                    LineImage(), // call class in TourAppbar.dart file
+                    //  LineImage(), // call class in TourAppbar.dart file
                   ],
                 ),
               ),
@@ -101,6 +105,10 @@ class contactcls extends StatelessWidget {
           bottomNavigationBar:
               BottomNavigation(), // call class in TourAppbar.dart file
         ));
+  }
+
+  void mappdirc() {
+    launch("https://goo.gl/maps/MNHYd6RvVijhkjpy9");
   }
 }
 

@@ -63,7 +63,7 @@ class _PlacesGridState extends State<PlacesGrid> {
         appBar: Appbar(),
         body: Column(
           children: [
-            LineImage(),
+            // LineImage(),
             HeaderSinglePage(maintitle: maintitle, headerimage: headerimage),
             Expanded(
               child: FutureBuilder<List<Places>>(
@@ -93,7 +93,7 @@ class _PlacesGridState extends State<PlacesGrid> {
                     return Center(child: CircularProgressIndicator());
                   }),
             ),
-            LineImage(),
+            // LineImage(),
             BottomNavigation()
           ],
         ));

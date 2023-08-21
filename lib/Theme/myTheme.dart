@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
@@ -19,7 +18,7 @@ ThemeData lightTheme = ThemeData(
       900: Color(0xff936F3E)
     },
   ),
-  
+
   primaryColor: Color(0xffEDD5B3),
   primaryColorBrightness: Brightness.light,
   primaryColorLight: Color(0x1aF5E0C3),
@@ -47,19 +46,19 @@ ThemeData lightTheme = ThemeData(
       ),
   buttonColor: Color(0xff936F3E),
   secondaryHeaderColor: Colors.grey,
-  textSelectionColor: Color(0xffB5BFD3),
-  cursorColor: Color(0xff936F3E),
-  textSelectionHandleColor: Color(0xff936F3E),
+  // textSelectionColor: Color(0xffB5BFD3),
+  // cursorColor: Color(0xff936F3E),
+  // textSelectionHandleColor: Color(0xff936F3E),
   backgroundColor: Color(0xff457BE0),
   dialogBackgroundColor: Colors.white,
   indicatorColor: Color(0xff457BE0),
   hintColor: Colors.grey,
   errorColor: Colors.red,
   toggleableActiveColor: Color(0xff6D42CE),
-  
+
   textTheme: TextTheme(
       //text themes that contrast with card and canvas
-      
+
       ),
   primaryTextTheme: TextTheme(
       //text theme that contrast with primary color
@@ -125,9 +124,9 @@ ThemeData darkTheme = ThemeData(
       ),
   buttonColor: Color(0xff483112),
   secondaryHeaderColor: Colors.grey,
-  textSelectionColor: Color(0x1a483112),
-  cursorColor: Color(0xff483112),
-  textSelectionHandleColor: Color(0xff483112),
+  // textSelectionColor: Color(0x1a483112),
+  // cursorColor: Color(0xff483112),
+  // textSelectionHandleColor: Color(0xff483112),
   backgroundColor: Color(0xff457BE0),
   dialogBackgroundColor: Colors.white,
   indicatorColor: Color(0xff457BE0),

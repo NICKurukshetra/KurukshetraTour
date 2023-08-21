@@ -97,9 +97,9 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       body: Column(children: [
-        LineImage(),
+      //  LineImage(),
         _listView(persons),
-        LineImage(),
+       // LineImage(),
       ]),
       bottomNavigationBar: BottomNavigation(),
     );
